@@ -1,0 +1,10 @@
+FROM nginx:alpine
+ARG artifact
+WORKDIR /usr/share/nginx/html
+LABEL author="CIMMYT"
+COPY ./$artifact /usr/share/nginx/html
+COPY ./default.conf /etc/nginx/conf.d/default.conf
+RUN unzip -o $artifact
+RUN rm $artifact
+EXPOSE 80
+ENTRYPOINT [ "nginx", "-g", "daemon off;" ]

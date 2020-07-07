@@ -1,0 +1,6 @@
+FROM cimmytdevops/webserverservices
+WORKDIR /usr/share/nginx/html
+LABEL author="CIMMYT"
+COPY . /usr/share/nginx/html
+EXPOSE 80
+ENTRYPOINT [ "nginx", "-g", "daemon off;" ]
